@@ -1,7 +1,6 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from poll.models import Question
+from poll.models import Question, Choice
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -14,11 +13,7 @@ class QuestionSerializer(serializers.ModelSerializer):
         ]
 
 
-# class QuestionS(serializers.ModelSerializer):
-#     title = serializers.CharField(max_length=256)
-#     status = serializers.CharField(max_length=10, default='inactive')
-#     created_by = serializers.PrimaryKeyRelatedField()
-#     start_date = serializers.DateTimeField(null=True, blank=True)
-#     end_date = serializers.DateTimeField(null=True, blank=True)
-#     created_at = serializers.DateTimeField(auto_now_add=True)
-#     updated_at = serializers.DateTimeField(auto_now=True)
+class ChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Choice
+        fields = '__all__'
